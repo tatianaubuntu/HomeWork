@@ -6,7 +6,7 @@ from homework_13_1.code.main import Category, Product
 @pytest.fixture
 def category_fixture():
     return Category('Молочные продукты', 'Пищевые продукты, вырабатываемые из молока',
-                    ['сыр', 'молоко', 'кефир'], ['Молочные продукты'])
+                    ['сыр', 'молоко', 'кефир'])
 
 
 def test_init_category(category_fixture):
