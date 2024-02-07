@@ -5,26 +5,27 @@ from homework_13_1.config import FILE_JSON
 
 class Category:
     """ Класс, описывающий категории товаров"""
-    title = str
-    description = str
-    products = list
-    category = list
+    title: str
+    description: str
+    products: list
+    total_number_of_categories = 0
+    total_number_of_unique_products = 0
 
-    def __init__(self, title, description, products, categories):
+    def __init__(self, title, description, products):
         self.title = title
         self.description = description
         self.products = products
-        self.categories = categories
-        self.total_number_of_categories = len(self.categories)
-        self.total_number_of_unique_products = len(self.products)
+
+        Category.total_number_of_categories += 1
+        Category.total_number_of_unique_products += len(self.products)
 
 
 class Product:
     """ Класс, описывающий информацию о товарах"""
-    title = str
-    description = str
-    price = float
-    quantity_in_stock = int
+    title: str
+    description: str
+    price: float
+    quantity_in_stock: int
 
     def __init__(self, title, description, price, quantity_in_stock):
         self.title = title
@@ -43,7 +44,7 @@ def main():
         category_ = []
         product_ = []
     for i in range(len(products)):
-        category = Category(products[i]["name"], products[i]["description"], products[i]["products"], products)
+        category = Category(products[i]["name"], products[i]["description"], products[i]["products"])
         category_.append(category.title)
         for prod in range(len(products[i]["products"])):
             product = Product(products[i]["products"][prod]["name"], products[i]["products"][prod]["description"],
