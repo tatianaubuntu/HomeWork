@@ -12,15 +12,15 @@ class Product:
         self.quantity_in_stock = quantity_in_stock
 
     @classmethod
-    def add_product(cls):
-        title = input('Название продукта: ')
-        description = input('Описание: ')
-        price = float(input('Стоимость: '))
-        quantity_in_stock = int(input('Количество в наличии: '))
+    def new_product(cls, product_data):
+        title = product_data['name']
+        description = product_data['description']
+        price = product_data['price']
+        quantity_in_stock = product_data['quantity']
         return cls(title, description, price, quantity_in_stock)
 
-    def cor_product(self):
-        new_product = Product.add_product()
+    def cor_product(self, product_data):
+        new_product = Product.new_product(product_data)
         if new_product.title == self.title:
             self.quantity_in_stock += new_product.quantity_in_stock
             if self.price <= new_product.price:
