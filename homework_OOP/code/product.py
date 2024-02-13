@@ -1,28 +1,24 @@
 class Product:
     """ Класс, описывающий информацию о товарах"""
-    title: str
+    name: str
     description: str
     price: float
-    quantity_in_stock: int
+    quantity: int
 
-    def __init__(self, title, description, price, quantity_in_stock):
-        self.title = title
+    def __init__(self, name, description, price, quantity):
+        self.name = name
         self.description = description
         self.__price = price
-        self.quantity_in_stock = quantity_in_stock
+        self.quantity = quantity
 
     @classmethod
     def new_product(cls, product_data):
-        title = product_data['name']
-        description = product_data['description']
-        price = product_data['price']
-        quantity_in_stock = product_data['quantity']
-        return cls(title, description, price, quantity_in_stock)
+        return cls(**product_data)
 
     def cor_product(self, product_data):
         new_product = Product.new_product(product_data)
-        if new_product.title == self.title:
-            self.quantity_in_stock += new_product.quantity_in_stock
+        if new_product.name == self.name:
+            self.quantity += new_product.quantity
             if self.price <= new_product.price:
                 self.price = new_product.price
 
@@ -40,3 +36,9 @@ class Product:
                 self.__price = new_price
         elif new_price > self.__price:
             self.__price = new_price
+
+    def __str__(self):
+        return f'{self.name}, {int(self.__price)} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, product):
+        return (self.__price * self.quantity) + (product.__price * product.quantity)
