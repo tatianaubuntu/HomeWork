@@ -1,3 +1,6 @@
+from homework_OOP.code.product import Product
+
+
 class Category:
     """ Класс, описывающий категории товаров"""
     name: str
@@ -14,15 +17,18 @@ class Category:
         Category.total_number_of_categories += 1
         Category.total_number_of_unique_products += len(self.__products)
 
-    def add_product(self, product):
-        self.__products.append(product)
-        Category.total_number_of_unique_products += 1
+    def __add__(self, product):
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.total_number_of_unique_products += 1
+            return self.__products
+        raise ValueError('Добавлять можно только объекты Product и дочерние от них.')
 
     @property
     def products(self):
         product_info = []
         for prod in self.__products:
-            product_info.append(f'{prod["name"]}, {int(prod["price"])} руб. Остаток: {prod["quantity"]} шт.')
+            product_info.append(f'{prod.name}, {int(prod.price)} руб. Остаток: {prod.quantity} шт.')
         return product_info
 
     def __len__(self):
@@ -30,7 +36,3 @@ class Category:
 
     def __str__(self):
         return f'{self.name}, количество продуктов: {self.__len__()} шт.'
-
-
-
-
