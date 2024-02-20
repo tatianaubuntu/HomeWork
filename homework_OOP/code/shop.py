@@ -13,3 +13,4 @@ class Shop:
             return result
         else:
             raise StopIteration
+
