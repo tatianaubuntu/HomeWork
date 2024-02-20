@@ -3,13 +3,10 @@ from homework_OOP.code.product import Product
 
 class Category:
     """ Класс, описывающий категории товаров"""
-    name: str
-    description: str
-    products: list
     total_number_of_categories = 0
     total_number_of_unique_products = 0
 
-    def __init__(self, name, description, products):
+    def __init__(self, name: str, description: str, products: list):
         self.name = name
         self.description = description
         self.__products = products
@@ -17,7 +14,7 @@ class Category:
         Category.total_number_of_categories += 1
         Category.total_number_of_unique_products += len(self.__products)
 
-    def __add__(self, product):
+    def add_product(self, product):
         if isinstance(product, Product):
             self.__products.append(product)
             Category.total_number_of_unique_products += 1

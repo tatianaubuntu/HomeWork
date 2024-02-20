@@ -1,12 +1,7 @@
 class Product:
     """ Класс, описывающий информацию о товарах"""
-    name: str
-    description: str
-    price: float
-    quantity: int
-    color: str
 
-    def __init__(self, name, description, price, quantity, color):
+    def __init__(self, name: str, description: str, price: float, quantity: int, color: str):
         self.name = name
         self.description = description
         self.__price = price
