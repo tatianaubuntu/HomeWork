@@ -1,14 +1,5 @@
 ﻿import pytest
 
-from homework_OOP.code.product import Product
-
-
-@pytest.fixture
-def product_fixture():
-    return (Product('Молоко', 'ценный пищевой продукт', 100.05, 5),
-            Product('Молоко', 'ценный пищевой продукт', 150, 4),
-            Product('Молоко', 'ценный пищевой продукт', 100, 4))
-
 
 def test_product(product_fixture):
     assert product_fixture[0].name == 'Молоко'
@@ -25,9 +16,12 @@ def test_product(product_fixture):
         "name": 'Молоко',
         "description": 'ценный пищевой продукт',
         "price": 150,
-        "quantity": 5
+        "quantity": 5,
+        "color": "white"
       })
     assert product_fixture[0].quantity == 10
     assert product_fixture[0].price == 150
     assert str(product_fixture[0]) == 'Молоко, 150 руб. Остаток: 10 шт.'
     assert product_fixture[0].__add__(product_fixture[1]) == 2100
+    with pytest.raises(TypeError):
+        product_fixture[0].__add__(product_fixture[3])
