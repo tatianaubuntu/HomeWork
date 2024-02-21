@@ -1,3 +1,3 @@
-def test_smartphone(smartphone_fixture):
-    assert smartphone_fixture.color == 'black'
-    assert smartphone_fixture.quantity == 15
+def test_smartphone(smartphone):
+    assert smartphone.color == 'black'
+    assert smartphone.quantity == 15

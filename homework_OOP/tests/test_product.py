@@ -1,27 +1,27 @@
 ﻿import pytest
 
 
-def test_product(product_fixture):
-    assert product_fixture[0].name == 'Молоко'
-    assert product_fixture[0].description == 'ценный пищевой продукт'
-    assert product_fixture[0].price == 100.05
-    assert product_fixture[0].quantity == 5
-    product_fixture[0].price = 150
-    assert product_fixture[0].price == 150
-    product_fixture[0].price = 0
-    assert product_fixture[0].price == 150
-    product_fixture[0].price = 100
-    assert product_fixture[0].price == 100
-    product_fixture[0].cor_product({
-        "name": 'Молоко',
-        "description": 'ценный пищевой продукт',
-        "price": 150,
+def test_product(product1, product2, lawn_grass):
+    assert product1.name == "Samsung Galaxy C23 Ultra"
+    assert product1.description == "256GB, Серый цвет, 200MP камера"
+    assert product1.price == 180000.0
+    assert product1.quantity == 5
+    product1.price = 190000.0
+    assert product1.price == 190000.0
+    product1.price = 0
+    assert product1.price == 190000.0
+    product1.price = 180000.0
+    assert product1.price == 180000.0
+    product1.cor_product({
+        "name": "Samsung Galaxy C23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
         "quantity": 5,
         "color": "white"
       })
-    assert product_fixture[0].quantity == 10
-    assert product_fixture[0].price == 150
-    assert str(product_fixture[0]) == 'Молоко, 150 руб. Остаток: 10 шт.'
-    assert product_fixture[0].__add__(product_fixture[1]) == 2100
+    assert product1.quantity == 10
+    assert product1.price == 180000.0
+    assert str(product1) == 'Samsung Galaxy C23 Ultra, 180000 руб. Остаток: 10 шт.'
+    assert product1.__add__(product2) ==  3480000.0
     with pytest.raises(TypeError):
-        product_fixture[0].__add__(product_fixture[3])
+        product1.__add__(lawn_grass)
