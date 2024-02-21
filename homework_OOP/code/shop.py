@@ -1,5 +1,8 @@
+from homework_OOP.code.category import Category
+
+
 class Shop:
-    def __init__(self, category):
+    def __init__(self, category: Category):
         self.category = category
 
     def __iter__(self):
