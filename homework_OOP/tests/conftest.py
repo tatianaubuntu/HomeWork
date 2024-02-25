@@ -2,6 +2,7 @@ import pytest
 
 from homework_OOP.code.category import Category
 from homework_OOP.code.lawn_grass import LawnGrass
+from homework_OOP.code.order import Order
 from homework_OOP.code.product import Product
 from homework_OOP.code.shop import Shop
 from homework_OOP.code.smartphone import Smartphone
@@ -16,6 +17,11 @@ def product1():
 @pytest.fixture
 def product2():
     return Product("Iphone 15", "512GB, Gray space", 210000.0, 8, 'white')
+
+
+@pytest.fixture
+def product3():
+    return Product("Iphone 10", "512GB, Gray space", 210000.0, 8, 'white')
 
 
 @pytest.fixture
@@ -49,3 +55,8 @@ def smartphone():
 @pytest.fixture
 def shop(category):
     return Shop(category)
+
+
+@pytest.fixture
+def order():
+    return Order('OnePlus 10Pro 12/256Gb Volcan Bl', 15, 150000)

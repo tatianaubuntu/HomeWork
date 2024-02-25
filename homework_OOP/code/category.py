@@ -1,12 +1,15 @@
+from homework_OOP.code.category_order_abc import CategoryOrderABC
+from homework_OOP.code.object_mixin import ObjectMixin
 from homework_OOP.code.product import Product
 
 
-class Category:
+class Category(ObjectMixin, CategoryOrderABC):
     """ Класс, описывающий категории товаров"""
     total_number_of_categories = 0
     total_number_of_unique_products = 0
 
     def __init__(self, name: str, description: str, products: list):
+        super().__init__()
         self.name = name
         self.description = description
         self.__products = products
@@ -32,3 +35,10 @@ class Category:
 
     def __str__(self):
         return f'{self.name}, количество продуктов: {self.__len__()} шт.'
+
+    def total_cost(self):
+        product_cost_list = []
+        for prod in self.__products:
+            product_cost_list.append(prod.price * prod.quantity)
+        return sum(product_cost_list)
+
