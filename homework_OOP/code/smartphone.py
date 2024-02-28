@@ -1,8 +1,8 @@
 from homework_OOP.code.object_mixin import ObjectMixin
-from homework_OOP.code.products_abc import ProductsABC
+from homework_OOP.code.product import Product
 
 
-class Smartphone(ProductsABC, ObjectMixin):
+class Smartphone(Product, ObjectMixin):
     """ Класс, описывающий информацию о смартфонах"""
 
     def __init__(self,
@@ -18,9 +18,3 @@ class Smartphone(ProductsABC, ObjectMixin):
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
-
-    def keeping(self):
-        """
-        Метод, который показывает информацию о хранении смартфонов
-        """
-        print(f'Смартфон хранится в сухом месте при комнатной температуре')

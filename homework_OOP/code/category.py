@@ -42,3 +42,4 @@ class Category(ObjectMixin, CategoryOrderABC):
             product_cost_list.append(prod.price * prod.quantity)
         return sum(product_cost_list)
 
+
