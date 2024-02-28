@@ -22,6 +22,6 @@ def test_product(product1, product2, lawn_grass):
     assert product1.quantity == 10
     assert product1.price == 180000.0
     assert str(product1) == 'Samsung Galaxy C23 Ultra, 180000 руб. Остаток: 10 шт.'
-    assert product1.__add__(product2) ==  3480000.0
+    assert product1.__add__(product2) == 3480000.0
     with pytest.raises(TypeError):
         product1.__add__(lawn_grass)

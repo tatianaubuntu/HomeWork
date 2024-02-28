@@ -1,8 +1,8 @@
 from homework_OOP.code.object_mixin import ObjectMixin
-from homework_OOP.code.products_abc import ProductsABC
+from homework_OOP.code.product import Product
 
 
-class LawnGrass(ProductsABC, ObjectMixin):
+class LawnGrass(Product, ObjectMixin):
     """ Класс, описывающий информацию о газонной траве"""
     def __init__(self,
                  name: str,
@@ -16,8 +16,3 @@ class LawnGrass(ProductsABC, ObjectMixin):
         self.country = country
         self.germination_period = germination_period
 
-    def keeping(self):
-        """
-        Метод, который показывает информацию о хранении газонной травы
-        """
-        print('Газонная трава хранится в помещении при температуре не выше +10 градусов')

@@ -6,8 +6,12 @@ class Product(ProductsABC, ObjectMixin):
     """ Класс, описывающий информацию о товарах"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str):
-        super().__init__(name, description, price, quantity, color)
+        super().__init__()
+        self.name = name
+        self.description = description
         self.__price = price
+        self.quantity = quantity
+        self.color = color
 
     @property
     def price(self):
@@ -37,7 +41,7 @@ class Product(ProductsABC, ObjectMixin):
         :param product_data: новый продукт
         Метод складывает количество товара, если он повторяется и корректирует стоимость на более высокую
         """
-        new_product = Product.new_product(product_data)
+        new_product = self.__class__.new_product(product_data)
         if new_product.name == self.name:
             self.quantity += new_product.quantity
             if self.price <= new_product.price:
@@ -58,8 +62,5 @@ class Product(ProductsABC, ObjectMixin):
             raise TypeError('Разные классы')
         return (self.__price * self.quantity) + (product.__price * product.quantity)
 
-    def keeping(self):
-        """
-        Метод, который показывает информацию о хранении продуктов
-        """
-        print(f'Продукты, в основном, хранятся в холодильнике')
+
+
