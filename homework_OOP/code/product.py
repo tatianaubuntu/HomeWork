@@ -2,16 +2,16 @@ from homework_OOP.code.object_mixin import ObjectMixin
 from homework_OOP.code.products_abc import ProductsABC
 
 
-class Product(ProductsABC, ObjectMixin):
+class Product(ObjectMixin, ProductsABC):
     """ Класс, описывающий информацию о товарах"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str):
-        super().__init__()
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
         self.color = color
+        super().__init__()
 
     @property
     def price(self):
@@ -61,6 +61,3 @@ class Product(ProductsABC, ObjectMixin):
         if type(product) != type(self):
             raise TypeError('Разные классы')
         return (self.__price * self.quantity) + (product.__price * product.quantity)
-
-
-
