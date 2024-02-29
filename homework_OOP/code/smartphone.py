@@ -14,7 +14,7 @@ class Smartphone(Product, ObjectMixin):
                  efficiency: str,
                  model: str,
                  memory: int):
-        super().__init__(name, description, price, quantity, color)
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
+        super().__init__(name, description, price, quantity, color)
