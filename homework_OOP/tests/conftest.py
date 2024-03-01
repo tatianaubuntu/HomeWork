@@ -4,6 +4,7 @@ from homework_OOP.code.category import Category
 from homework_OOP.code.lawn_grass import LawnGrass
 from homework_OOP.code.order import Order
 from homework_OOP.code.product import Product
+from homework_OOP.code.product_error import ProductError
 from homework_OOP.code.shop import Shop
 from homework_OOP.code.smartphone import Smartphone
 
@@ -25,6 +26,11 @@ def product3():
 
 
 @pytest.fixture
+def product4():
+    return Product("Iphone 10", "512GB, Gray space", 210000.0, 0, 'white')
+
+
+@pytest.fixture
 def products(product1, product2):
     return [product1, product2]
 
@@ -34,6 +40,13 @@ def category(products):
     return Category("Смартфоны",
                     "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
                     products)
+
+
+@pytest.fixture
+def category1(products):
+    return Category("Смартфоны",
+                    "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
+                    [])
 
 
 @pytest.fixture

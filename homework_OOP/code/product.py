@@ -2,7 +2,7 @@ from homework_OOP.code.object_mixin import ObjectMixin
 from homework_OOP.code.products_abc import ProductsABC
 
 
-class Product(ObjectMixin, ProductsABC):
+class Product(ProductsABC, ObjectMixin):
     """ Класс, описывающий информацию о товарах"""
 
     def __init__(self, name: str, description: str, price: float, quantity: int, color: str):
